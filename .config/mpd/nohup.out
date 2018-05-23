@@ -1,0 +1,24 @@
+INFO     Starting Mopidy 2.1.0
+INFO     Loading config from builtin defaults
+INFO     Loading config from /home/tomo/.config/mopidy/mopidy.conf
+INFO     Loading config from command line options
+INFO     Enabled extensions: spotify, mpd, http, stream, m3u, softwaremixer, file, local
+INFO     Disabled extensions: soundcloud
+WARNING  Found fatal audio configuration errors:
+WARNING    audio/port unknown config key.
+WARNING  Found soundcloud configuration errors, the extension has been automatically disabled:
+WARNING    soundcloud/auth_token must be set.
+WARNING  Please fix the extension configuration errors or disable the extensions to silence these messages.
+ERROR    Please fix fatal configuration errors, exiting...
+INFO     Starting Mopidy 2.1.0
+INFO     Loading config from builtin defaults
+INFO     Loading config from /home/tomo/.config/mopidy/mopidy.conf
+INFO     Loading config from command line options
+INFO     Enabled extensions: spotify, mpd, http, stream, m3u, softwaremixer, file, local
+INFO     Disabled extensions: soundcloud
+WARNING  Found fatal audio configuration errors:
+WARNING    audio/port unknown config key.
+WARNING  Found soundcloud configuration errors, the extension has been automatically disabled:
+WARNING    soundcloud/auth_token must be set.
+WARNING  Please fix the extension configuration errors or disable the extensions to silence these messages.
+ERROR    Please fix fatal configuration errors, exiting...
