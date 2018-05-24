@@ -169,6 +169,7 @@ assign [class = "Psensor"] $workspace9
 for_window [class = "Lxappearance"] floating enable
 for_window [class = "Pavucontrol"] floating enable
 for_window [class = "Psensor"] floating enable
+for_window [class = "Nm-connection-editor"] floating enable
 
 
 
@@ -198,14 +199,17 @@ gaps outer 2
 
 hide_edge_borders vertical
 
+
+#### Start up ####
 exec_always --no-startup-id ~/.config/polybar/launch.sh # Start polybar
 exec_always --no-startup-id ~/.config/compton/launch.sh # Start compton
 #exec_always --no-startup-id compton --backend glx --vsync opengl --config ~/.config/compton/config
 exec_always feh --randomize --bg-scale ~/Pictures/4K_Wallpapers # Choose a random wallpaper
 exec_always --no-startup-id sleep 2; betterlockscreen -u $(cat ~/.fehbg | awk -F "'" '{print $2}') # Update betterlockscreen cache to current background after waiting for ~/.fehbg to be updated by feh
+exec_always --no-startup-id nbfc.exe config --set "Lenovo Ideapad 710S"; nbfc.exe start -e; nbfc.exe set -s 10 -f 0 -f 1
 exec --no-startup-id nohup mopidy ;mkfifo /tmp/mpd.fifo;while :; do yes $’\n’ | nc -lu 127.0.0.1 5555 > /tmp/mpd.fifo; done & # Start mopidy
 exec --no-startup-id pulseaudio
-exec nm-applet # Network manager applet (system tray)
+# exec nm-applet # Network manager applet (system tray)
 
 
 #### KEY BINDINGS ####

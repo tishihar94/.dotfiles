@@ -20,11 +20,16 @@ background-alrt = #cfA1BB76
 ;foreground = ${xrdb:color7:#222}
 foreground = #F3F3BA
 foreground-alt = #F3F3BA
+foreground-alrt = #A82B5D
 primary = #F3F3BA
 secondary = #F3F3BA
 
 
-[bar/PolybarTomo]
+[bar/polybarTomo]
+modules-left = i3
+modules-center =  date
+modules-right = openconnect filesystem cpu volume wireless-network battery powermenu
+
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
 height = 50
@@ -56,15 +61,12 @@ font-4 = Font Awesome 5 Free:style=Solid:pixelsize=8;1
 font-5 = Font Awesome 5 Brands:pixelsize=8;1
 
 
-modules-left = i3
-modules-center =  date
-modules-right = filesystem cpu volume battery powermenu
 
 tray-position = right
 tray-padding = 0
-tray-transparent = false
+tray-transparent =
 tray-offset-y = 0
-tray-offset-x = -0
+tray-offset-x = 0
 tray-maxsize = 40
 tray-detached = false
 ;tray-background = #0063ff
@@ -170,7 +172,15 @@ label-urgent-foreground = #000000
 label-urgent-background = ${colors.background-alrt}
 label-urgent-padding = 4
 
-
+[module/openconnect]
+type = internal/network
+interface = vpn0
+interval = 5
+format-connected-prefix = "     "
+format-connected = "%{A1:nm-connection-editor:}<label-connected>%{A}   "
+format-connected-background = ${colors.background-alrt}
+format-connected-foreground = ${colors.foreground-alrt}
+click-left = "nmtui"
 
 
 [module/wireless-network]
@@ -331,19 +341,21 @@ label-separator = " "
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
+;menu-0-0-exec = menu-open-1
+menu-0-0-exec = reboot
 menu-0-1 = "power off   "
-menu-0-1-exec = menu-open-2
+;menu-0-1-exec = menu-open-2
+menu-0-1-exec = poweroff
 
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo restart
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+;menu-1-0 = cancel
+;menu-1-0-exec = menu-open-0
+;menu-1-1 = reboot
+;menu-1-1-exec = sudo restart
+;
+;menu-2-0 = power off
+;menu-2-0-exec = sudo poweroff
+;menu-2-1 = cancel
+;menu-2-1-exec = menu-open-0
 
 
 [settings]

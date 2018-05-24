@@ -21,9 +21,15 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+export PATH=$PATH:/opt/nbfc/
+
 export XDG_CURRENT_DESKTOP="i3"
 export EDITOR=vim
 
 #urxvt color fix
-TERM='rxvt-unicode'
-COLORTERM='rxvt-unicode-256color'
+#TERM='rxvt-unicode'
+#COLORTERM='rxvt-unicode-256color'
+
+# Scaling fix
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
