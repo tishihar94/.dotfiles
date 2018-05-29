@@ -8,7 +8,7 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #212E36
-background = #cf172a47
+;background = #cf172a47
 ;it's ARGB so "cf" is for transparency
 background-alt = #cf3C5A46
 background-unf = #cf2E463E
@@ -18,11 +18,18 @@ background-mod2 = #cf708963
 background-alrt = #cfA1BB76
 
 ;foreground = ${xrdb:color7:#222}
-foreground = #F3F3BA
-foreground-alt = #F3F3BA
-foreground-alrt = #A82B5D
-primary = #F3F3BA
-secondary = #F3F3BA
+;foreground = #F3F3BA
+;foreground-alt = #F3F3BA
+;foreground-alrt = #A82B5D
+;primary = #F3F3BA
+;secondary = #F3F3BA
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
 
 
 [bar/polybarTomo]
@@ -117,7 +124,7 @@ type = internal/i3
 ;label-unfocused-padding = 3
 ;
 ;label-focused-background = ${colors.background-alt}
-label-unfocused-background = ${colors.background-unf}
+label-unfocused-background = ${colors.secondary}
 ;
 ;label-mode-padding = 0
 ;label-mode-background = ${colors.background-unf}
@@ -141,7 +148,7 @@ label-mode-background = #e60053
 ; Default: %icon%  %name%
 label-focused = %name%
 label-focused-foreground = #ffffff
-label-focused-background = ${colors.background-alt}
+label-focused-background = ${colors.primary}
 label-focused-underline = #fba922
 label-focused-padding = 4
 
@@ -169,17 +176,17 @@ label-visible-padding = 4
 ; Default: %icon%  %name%
 label-urgent = %name%
 label-urgent-foreground = #000000
-label-urgent-background = ${colors.background-alrt}
+label-urgent-background = ${colors.alert}
 label-urgent-padding = 4
 
 [module/openconnect]
 type = internal/network
 interface = vpn0
 interval = 5
-format-connected-prefix = "     "
+format-connected-prefix = "    "
 format-connected = "%{A1:nm-connection-editor:}<label-connected>%{A}   "
-format-connected-background = ${colors.background-alrt}
-format-connected-foreground = ${colors.foreground-alrt}
+format-connected-background = ${colors.alert}
+format-connected-foreground = ${colors.foreground}
 click-left = "nmtui"
 
 
@@ -188,24 +195,24 @@ type = internal/network
 interface = wlp3s0
 interval = 3.0
 
-format-connected-prefix = " "
+format-connected-prefix = "   "
 
-format-connected-background = ${colors.background-alt}
-format-connected = "   <ramp-signal> <label-connected>  "
+format-connected-background = ${colors.secondary}
+format-connected = "   <ramp-signal>   "
 format-connected-underline = #9f78e1
 label-connected =
 
 format-disconnected = " no wifi :( "
-format-disconnected-background = ${colors.background-unf}
+format-disconnected-background = ${colors.secondary}
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = "    0%"
-ramp-signal-1 = "    25%"
-ramp-signal-2 = "    50%"
-ramp-signal-3 = "    75%"
-ramp-signal-4 = "    100%"
+ramp-signal-0 = "  0%"
+ramp-signal-1 = "  25%"
+ramp-signal-2 = "  50%"
+ramp-signal-3 = "  75%"
+ramp-signal-4 = "  100%"
 ramp-signal-foreground = ${colors.foreground-alt}
 
 
@@ -276,10 +283,10 @@ master-mixer = Master
 ; Default: false
 mapped = true
 
-format-muted-background = ${colors.background-unf}
-format-volume-background = ${colors.background-alt}
-format-volume = "   <ramp-volume>  <label-volume>  "
-format-volume-prefix = "    "
+format-muted-background = ${colors.primary}
+format-volume-background = ${colors.secondary}
+format-volume = "<ramp-volume>  <label-volume>   "
+format-volume-prefix = "   "
 label-muted = "   mute   "
 
 ;label-muted = "          "
@@ -295,15 +302,15 @@ battery = BAT0
 adapter = AC
 full-at = 97
 
-format-full-background = ${colors.background-mod2}
-format-charging-background = ${colors.background-mod1}
+format-full-background = ${colors.secondary}
+format-charging-background = ${colors.secondary}
 format-charging = "⁣   <animation-charging> <label-charging>"
 format-charging-underline = #ffb52a
 
 format-charging-suffix = "   "
 
-format-discharging-background = ${colors.background-alt}
-format-discharging = "⁣  <ramp-capacity> <label-discharging>  "
+format-discharging-background = ${colors.secondary}
+format-discharging = "⁣  <ramp-capacity> <label-discharging>   "
 format-discharging-underline = ${self.format-charging-underline}
 
 format-full = 
@@ -332,11 +339,11 @@ type = custom/menu
 format-spacing = 1
 
 label-open = "      "
-label-open-background = ${colors.background-mod1}
-label-open-foreground = ${colors.secondary}
+label-open-background = ${colors.secondary}
+label-open-foreground = ${colors.foreground-alt}
 label-close = "    cancel   "
-label-close-background = ${colors.background-mod2}
-label-close-foreground = ${colors.secondary}
+label-close-background = ${colors.primary}
+label-close-foreground = ${colors.foreground-alt}
 label-separator = " "
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -393,8 +400,8 @@ margin-bottom = 5
 type = internal/fs
 interval = 25
 mount-0 = /home
-label-mounted-background = ${colors.background-alt}
-label-mounted = "      %free%"
+label-mounted-background = ${colors.secondary}
+label-mounted = "     %free%   "
 label-unmounted = %mountpoint% not mounted
 label-unmounted-foreground = ${colors.foreground-alt}
  
@@ -425,12 +432,12 @@ label-unmounted-foreground = ${colors.foreground-alt}
 [module/cpu]
 type = internal/cpu
 interval = 5
-format-background = ${colors.background-alt}
-format-prefix = "      "
+format-background = ${colors.secondary}
+format-prefix = "     "
 ;format-prefix-foreground = ${colors.foreground-alt}
 ;format-prefix-background = ${colors.background-alt}
 ;format-underline = #f90000
-label = %percentage%%
+label = "%percentage%%   "
 
 ;[module/memory]
 ;type = internal/memory
